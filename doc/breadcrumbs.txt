@@ -57,6 +57,14 @@ KEY MAPPINGS					*breadcrumbs-key-mappings*
 ==============================================================================
 CUSTOMIZING					*breadcrumbs-customizing*
 
+					*g:breadcrumbs#toplevel_placeholder*
+g:breadcrumbs#toplevel_placeholder
+
+	Set something if you always want to display something at the top.
+
+>
+	let g:breadcrumbs#toplevel_placeholder = '/'
+<
 
 
 ==============================================================================

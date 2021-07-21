@@ -31,7 +31,11 @@ function breadcrumbs#show(items) abort
   endif
   let w:breadcrumbs_items = items
   if empty(items)
-    return
+    if exists('g:breadcrumbs#toplevel_placeholder')
+      let items = [[line('.'), g:breadcrumbs#toplevel_placeholder]]
+    else
+      return
+    endif
   endif
   let n = 100
   for [lnum, menu] in items
