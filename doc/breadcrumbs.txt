@@ -62,8 +62,8 @@ CUSTOMIZING					*breadcrumbs-customizing*
 ==============================================================================
 CHANGELOG					*breadcrumbs-changelog*
 
-1.0.0	xxxx-xx-xx
-	- Initial version.
+0.1.0	2021-07-21
+	- Preview version.
 
 
 ==============================================================================
