@@ -1,6 +1,5 @@
-let b:breadcrumbs_converter = function('s:convert')
-
 if exists('*s:convert')
+  let b:breadcrumbs_converter = function('s:convert')
   finish
 endif
 
@@ -11,3 +10,4 @@ function s:convert(item) abort
     endif
   return item
 endfunction
+let b:breadcrumbs_converter = function('s:convert')
