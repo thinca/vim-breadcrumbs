@@ -21,6 +21,7 @@ endfunction
 
 function breadcrumbs#show(items) abort
   let items = mapnew(a:items, { _, item -> [item[0], escape(item[1], ' .|')] })
+  let items = s:avoid_duplicated(items)
   if exists('w:breadcrumbs_items')
     if w:breadcrumbs_items == items
       return
@@ -57,6 +58,24 @@ function breadcrumbs#off() abort
     autocmd! * <buffer>
   augroup END
   call breadcrumbs#remove()
+endfunction
+
+function s:avoid_duplicated(items) abort
+  let entries = {}
+  let new_items = []
+  for item in a:items
+    let display = item[1]
+    while has_key(entries, display)
+      if display =~# '_\d\+$'
+        let display = substitute(display, '\d\+$', '\=submatch(0)+1', '')
+      else
+        let display = display .. '_1'
+      endif
+    endwhile
+    let new_items += [[item[0], display]]
+    let entries[display] = 1
+  endfor
+  return new_items
 endfunction
 
 function s:search_breadcrumbs_items(lnum) abort
